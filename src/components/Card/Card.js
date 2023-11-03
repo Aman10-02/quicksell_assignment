@@ -1,7 +1,12 @@
 import React from 'react'
-import { FaCircle, FaUser } from 'react-icons/fa6'
+import { FaCircle } from 'react-icons/fa6'
+import { FaEllipsis, FaPlus, FaUser, FaTriangleExclamation, FaCircleCheck } from 'react-icons/fa6'
+import { PiCellSignalFullFill, PiCellSignalMediumFill, PiCellSignalLowFill  } from 'react-icons/pi'
+import { BsCircle } from 'react-icons/bs'
+import { TbProgressCheck, TbCircleDotted  } from 'react-icons/tb'
+import { GiCancel  } from 'react-icons/gi'
 import "./card.css"
-function Card({details, group}) {
+function Card({details, group, priorityIcons, statusIcons, name}) {
     console.log(details)
   return (
     <div className="card-container">
@@ -12,17 +17,26 @@ function Card({details, group}) {
                     <FaUser /> }
             </div>
             <div className="card-content">
-                <div className='icon-card' >
-                    <FaUser />
-                </div>
+                { group !== "status" &&
+                <>
+                    <div className='icon-card' >
+                        {statusIcons[details.status]}
+                    </div>
+                </>
+                    
+                }
                 <div className='card-title'>
                     {details.title}
                 </div>
             </div>
             <div className="card-footer">
-                <div className='icon-card' >
-                    <FaUser />
-                </div>
+                    { group !== "priority" &&
+                        <>
+                            <div className='icon-card' >
+                                {priorityIcons[details.priority]}
+                            </div>
+                        </>
+                    }
                 <div className='card-tag' >
                     <FaCircle className='card-tag-circle'  />
                     {details.tag}
