@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GridBox from './components/GridBox/GridBox'
 import Navbar from './components/navbar/Navbar';
-import "./app.css"
+import "./App.css"
 
 function App() {
   const [tickets, setTickets] = useState([]);
